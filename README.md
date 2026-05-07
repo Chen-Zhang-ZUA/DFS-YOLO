@@ -18,22 +18,5 @@ In the **VisDrone2019** dataset, the proposed DFS-YOLO achieves an mAP50 of 42.8
 2. **Dynamic Multi-scale Bottleneck (DMB):** To address the receptive field mismatch problem caused by scale mutations of small objects under UAV perspectives, DMB is proposed. Utilizing a shared parameter pool technique, a dynamic convolution mechanism is integrated into the feature extraction backbone. This enhances the model's adaptive multi-scale perception capability while maintaining low computational overhead.
 3. **Slicing Context-Aware Fusion (SCA-Fusion):** To mitigate the feature boundary blurring problem caused by the loss of small objects within background semantics and computational redundancy, the SCA-Fusion module is constructed. At the terminal stage of feature fusion, it improves the detection precision of small objects through a fine-grained grid attention mechanism.
 
-## 🛠️ Installation
 
-It is recommended to use Conda to create a virtual environment.
-
-```bash
-# 1. Clone the repository
-git clone [https://github.com/your_username/DFS-YOLO.git](https://github.com/your_username/DFS-YOLO.git)
-cd DFS-YOLO
-
-# 2. Create and activate a virtual environment (Python 3.10 recommended)
-conda create -n dfs-yolo python=3.10
-conda activate dfs-yolo
-
-# 3. Install PyTorch (Adjust according to your CUDA version, e.g., CUDA 11.8)
-conda install pytorch==2.2.2 torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
-
-# 4. Install dependencies
-pip install -r requirements.txt
 
