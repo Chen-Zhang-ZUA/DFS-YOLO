@@ -7,7 +7,7 @@ DFS-YOLO: Dynamic Multi-Scale Perception and Contextual Fusion for Small Object 
 
 ## 📖 简介 (Introduction)
 
-DFS-YOLO 是一个基于 Ultralytics YOLO 架构进行深度重构与优化的先进目标检测模型，专门针对**无人机（UAV）航拍视角**和**极小目标检测（Tiny Object Detection）**场景设计。
+DFS-YOLO 是一个基于 Ultralytics YOLO 架构进行深度重构与优化的先进目标检测模型，专门针对**无人机（UAV）航拍视角**和**小目标检测（Small Object Detection）**场景设计。
 
 在无人机视角下，目标通常面临尺度剧烈变化、背景复杂以及分辨率极低等挑战。为了解决这些问题，本项目在底层架构中引入了动态多尺度卷积、细粒度注意力切片融合以及全维度特征提取机制，显著提升了模型对微小特征的感知能力。
 
