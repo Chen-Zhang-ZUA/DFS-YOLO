@@ -1,44 +1,20 @@
-DFS-YOLO: Dynamic Multi-Scale Perception and Contextual Fusion for Small Object Detection in UAV Imagery
-# DFS-YOLO: Enhanced YOLO for UAV Small Object Detection 🚀
+# DFS-YOLO: Dynamic Multi-Scale Perception and Contextual Fusion for Small Object Detection in UAV Imagery 🚀
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.2.2-orange.svg)
 ![License](https://img.shields.io/badge/License-AGPL%203.0-green.svg)
 
-## 📖 简介 (Introduction)
+## 📖 Abstract
 
-DFS-YOLO 是一个基于 Ultralytics YOLO 架构进行深度重构与优化的先进目标检测模型，专门针对**无人机（UAV）航拍视角**和**小目标检测（Small Object Detection）**场景设计。
+Unmanned aerial vehicles (UAVs) play a crucial role in aerial tasks such as wide-area inspection and aerial reconnaissance; however, visual perception from complex perspectives still faces severe technical challenges. Specifically, the high-altitude perspective results in extremely small object pixels, fluctuations in flight altitude cause drastic scale variations of objects, and complex urban or wilderness backgrounds introduce massive high-frequency interference, all of which severely constrain the efficacy of existing object detection algorithms. To address these challenges, this article proposes a small object detection algorithm for UAV aerial imagery, termed DFS-YOLO. To address the vulnerability of minute object features to loss and the interference of background noise, a spatial depth transformation and a spatial-frequency dual-domain perception mechanism are introduced. Furthermore, large-kernel orthogonal spatial perception and energy-guided frequency-domain gating are proposed to accurately filter out high-frequency environmental noise. Secondly, to enhance the dynamic zooming capability of the model to adaptively handle object scales, a Dynamic Multi-scale Bottleneck (DMB) is proposed. This module introduces a dynamic convolution mechanism into the cross-stage partial network, which improves the shared parameter pool and heterogeneous dilation rates while maintaining an extremely low parameter cost. Finally, a Slicing Contextual Awareness Fusion (SCA-Fusion) module is constructed, which deeply decouples the salient features of weak objects from complex backgrounds through a fine-grained grid attention mechanism. In the VisDrone2019 dataset, the proposed DFS-YOLO achieves an mAP50 of 42.8\% and an mAP50:95 of 28.8\%, producing improvements of 3.5\% and 5.2\% over the baseline algorithm, respectively. Furthermore, cross-scene testing on the CODrone and TinyPerson objectively verifies its strong generalization capability in complex environments.
 
-在无人机视角下，目标通常面临尺度剧烈变化、背景复杂以及分辨率极低等挑战。为了解决这些问题，本项目在底层架构中引入了动态多尺度卷积、细粒度注意力切片融合以及全维度特征提取机制，显著提升了模型对微小特征的感知能力。
+## ✨ Key
 
-## ✨ 核心创新点 (Key Features)
+1.To address the issue of false positives and missed detections caused by feature loss and noise interference of small objects in aerial imagery, an Omni-directional Lossless Extractor (OLE) architecture is designed. A spatial depth lossless transformation and a spatial-frequency dual-domain collaborative perception mechanism are introduced. While preserving the details of small objects, it filters out high-frequency environmental noise, thereby improving object detection precision.
 
-本项目对 YOLO 的网络结构（Backbone & Head）进行了大幅魔改，主要集成了以下核心模块：
+2.To address the receptive field mismatch problem caused by scale mutations of small objects under UAV perspectives, a Dynamic Multi-scale Bottleneck (DMB) is proposed. Utilizing a shared parameter pool technique, a dynamic convolution mechanism is integrated into the feature extraction backbone. This enhances the model's adaptive multi-scale perception capability while maintaining low computational overhead.
 
-* **DMB (Dynamic Multi-scale Block) & C3k2_DMB**: 
-  重构自 Kernel Warehouse (KW) 机制。针对无人机高度变化带来的尺度问题，引入了共享权重的多尺度膨胀卷积（Dilations=[1, 2]），并结合了定制的 `UAV_Attention`（双路特征池化），在保留背景上下文的同时，极大地增强了对极小目标的局部高亮特征提取。
-* **SCA_Fusion (Spatial-Channel Attention Fusion)**: 
-  一种针对小目标优化的多级融合网络。内部集成了细粒度网格切片无参数注意力（SimAM with Slicing）、双池化通道注意力（捕捉全局背景与小目标显著性）以及空洞空间注意力，实现像素级的精细特征融合。
-* **CSPOKnet (CSP OmniKernel Network)**: 
-  引入全维度大感受野卷积机制，通过 CSP（跨阶段局部网络）结构封装，在保证推理速度的同时，有效捕捉大范围的复杂背景特征。
-* **SPDConv (Space-to-Depth Convolution)**: 
-  取代传统步长卷积，通过空间到深度的转换，最大程度避免了下采样过程中细粒度特征的丢失，是小目标检测的利器。
+3.To mitigate the feature boundary blurring problem caused by the loss of small objects within background semantics and computational redundancy, a Slicing Context-Aware Fusion (SCA-Fusion) module is constructed. At the terminal stage of feature fusion, it improves the detection precision of small objects through a fine-grained grid attention mechanism.
 
-## 🛠️ 安装指南 (Installation)
+If this project is helpful to your research, please cite the following references.
 
-建议使用 Conda 创建独立的虚拟环境来运行本项目。
-
-```bash
-# 1. 克隆仓库
-git clone [https://github.com/your_username/DFS-YOLO.git](https://github.com/your_username/DFS-YOLO.git)
-cd DFS-YOLO
-
-# 2. 创建并激活虚拟环境 (推荐 Python 3.10)
-conda create -n dfs-yolo python=3.10
-conda activate dfs-yolo
-
-# 3. 安装 PyTorch (请根据你的 CUDA 版本调整)
-conda install pytorch==2.2.2 torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
-
-# 4. 安装依赖
-pip install -r requirements.txt
