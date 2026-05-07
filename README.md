@@ -12,7 +12,7 @@ To address these challenges, this article proposes a small object detection algo
 
 In the **VisDrone2019** dataset, the proposed DFS-YOLO achieves an mAP50 of 42.8% and an mAP50:95 of 28.8%, producing improvements of 3.5% and 5.2% over the baseline algorithm, respectively. Furthermore, cross-scene testing on the **CODrone** and **TinyPerson** objectively verifies its strong generalization capability in complex environments.
 
-![DFS-YOLO Architecture](https://raw.githubusercontent.com/Chen-Zhang-ZUA/DFS-YOLO/main/DFS-YOLO/images/fig.png)
+![DFS-YOLO Architecture](https://raw.githubusercontent.com/Chen-Zhang-ZUA/DFS-YOLO/main/images/fig.png)
 
 ## ✨ Key Contributions
 
