@@ -1,4 +1,4 @@
-# DFS-YOLO: Prior-Guided Dynamic Feature Enhancement and Context-Aware Fusion for Small Object Detection in UAV Imagery
+# Computation-Aware Prior-Guided Dynamic Neural Feature Learning for UAV Small Object Detection
 
 **Authors:**  
 Yu Chen, Chen Zhang, Zhongliang Deng, Zhaoyu Liu, Heng Yang,  
